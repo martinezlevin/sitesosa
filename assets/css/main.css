@@ -1217,13 +1217,19 @@ section,
 
 .features .intro-image {
   position: relative;
+  width: 100%;
+  padding: 1rem;
 }
 
 .features .intro-image img {
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
 }
 
+/* Elementos decorativos */
 .features .intro-image::before {
   content: "";
   position: absolute;
@@ -1249,6 +1255,23 @@ section,
   z-index: -1;
   opacity: 0.5;
 }
+
+@media (max-width: 768px) {
+  .features .intro-image {
+    padding: 0.5rem;
+  }
+
+  .features .intro-image img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .features .intro-image::before,
+  .features .intro-image::after {
+    display: none;
+  }
+}
+
 
 .features .features-grid {
   display: grid;
@@ -4228,11 +4251,18 @@ th {
 
 .buttons-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
-  gap: 24px; /* espacio entre columnas y filas */
-  max-width: 640px; /* ancho total del grid, ajustalo a gusto */
-  margin: 0 auto; /* centrar en la página */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 640px;
+  margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+  .buttons-grid {
+    grid-template-columns: 1fr; /* 1 sola columna en mobile */
+  }
+}
+
 
 .column {
   display: flex;
@@ -4244,8 +4274,3 @@ th {
   display: block; /* que el link tome todo el ancho para facilitar click */
 }
 
-
-.intro-image {
-  width: 500px;
-  height: auto !important;
-}
