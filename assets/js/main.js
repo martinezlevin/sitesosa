@@ -281,6 +281,23 @@ buttons.forEach(btn => {
 });
 
 
+// JS PARA LOS BOTONES DE COPIAR TEXTO
+
+document.querySelectorAll('.copy-container label').forEach(label => {
+  const checkbox = label.querySelector('input[type="checkbox"]');
+  label.addEventListener('click', e => {
+    e.preventDefault(); // Evitar toggle automático del checkbox para controlar manualmente
+    const body = label.closest('.accordion-body');
+    const text = body.innerText.trim();
+
+    navigator.clipboard.writeText(text).then(() => {
+      checkbox.checked = true; // Mostrar icono check
+      setTimeout(() => {
+        checkbox.checked = false; // Resetear icono a clipboard
+      }, 2000);
+    });
+  });
+});
 
 
 

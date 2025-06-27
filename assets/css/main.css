@@ -4320,3 +4320,58 @@ th {
   transition: transform 0.4s ease;
 }
 
+.accordion-body {
+  position: relative;
+  margin: 20px;
+
+}
+
+.container1 {
+  --color: #a5a5b0;
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+}
+
+.container1 .clipboard {
+  position: absolute;
+  animation: keyframes-fill .5s;
+}
+
+.container1 .clipboard-check {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill .5s;
+}
+
+.container1 input:checked ~ .clipboard {
+  display: none;
+}
+
+.container1 input:checked ~ .clipboard-check {
+  display: block;
+}
+
+.container1 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.2);
+  }
+}
