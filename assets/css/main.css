@@ -4041,7 +4041,7 @@ table {
   border-collapse: collapse;
   text-align: center;
   font-size: 12px;
-  color: #ffe0b2;
+  color: #ffffff;
 }
 
 th, td {
@@ -4053,6 +4053,81 @@ th {
   background: #ff6f00;
   color: #121212;
 }
+
+.tabla-contactos {
+  position: relative; /* necesario para que z-index funcione */
+  z-index: 10; /* o más, según lo que quieras superponer */
+}
+
+/* Efecto de escala al hacer hover sobre filas */
+.obj-mensuales table tbody tr {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.obj-mensuales table tbody tr:hover {
+  transform: scale(1.02);
+  background-color: #2a2a2a; /* tono oscuro levemente distinto para el hover */
+  z-index: 1;
+  position: relative;
+}
+
+/* Reducir espacio entre subtítulo y tabla */
+#contact .section-title {
+  margin-bottom: -50px; /* ajustá este valor según lo necesites */
+}
+
+
+/* Estilos para las imágenes laterales */
+.side-image {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px; /* ancho inicial, adaptalo a lo que necesites */
+  max-width: 20vw;
+  height: auto;
+  object-fit: contain;
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.side-image {
+  transform: scale(2); /* 1.0 es tamaño normal, 1.3 es 30% más grande */
+  transform-origin: center; /* Opcional: cambia desde dónde se agranda */
+}
+
+
+.side-image:hover {
+  opacity: 1;
+}
+
+/* Posición izquierda y derecha */
+
+.left-image {
+  left: 60px; /* antes: 0 */
+  width: 300px;
+  height: auto;
+}
+
+.right-image {
+  right: 60px; /* antes: 0 */
+  width: 300px;
+  height: auto;
+}
+
+
+
+
+/* Ajustes para desktop (a partir de 1200px se muestran) */
+@media (max-width: 1200px) {
+  .side-image {
+    display: none;
+  }
+}
+
+
 
 
 /* /OBJETIVOS SECTION */
