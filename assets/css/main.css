@@ -4450,3 +4450,9 @@ th {
     transform: rotate(-10deg) scale(1.2);
   }
 }
+
+
+.modal-xl-custom {
+  max-width: 80vw; /* Ajustá a tu gusto */
+  width: 100%;
+}
