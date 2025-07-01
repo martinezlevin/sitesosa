@@ -3979,98 +3979,6 @@ section,
 }
 
 
-/* OBJETIVOS SECTION */
-
-.obj-mensuales {
-  width: 100%;
-  max-width: 520px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 96%) 0%, var(--background-color) 40%, color-mix(in srgb, var(--accent-color), transparent 98%) 100%);
-  box-shadow: 0 20px 60px color-mix(in srgb, var(--default-color), transparent 88%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 50px auto;
-  border-radius: 15px;
-  overflow: hidden;
-  border: 2px solid #222222;
-}
-
-.obj-header {
-  background: #1e1e1e;
-  padding: 15px;
-  color: #ffffff;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  border-bottom: 2px solid #ff8f00;
-}
-
-.tab-buttons {
-  display: flex;
-  justify-content: space-around;
-  background: #1e1e1e;
-  padding: 10px 0;
-}
-
-.tab-buttons button {
-  background: transparent;
-  border: 1px solid #ff6f00;
-  padding: 8px 12px;
-  color: #ffab40;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 13px;
-  transition: all 0.3s ease;
-  border-radius: 6px;
-}
-
-.tab-buttons button.active,
-.tab-buttons button:hover {
-  background: #ff6f00;
-  color: #121212;
-  border-color: #ff9100;
-}
-
-.tab-content {
-  padding: 10px 15px 20px 15px;
-  background: #1a1a1a;
-  color: #f5f5f5;
-  font-size: 13px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  font-size: 12px;
-  color: #ffffff;
-}
-
-th, td {
-  padding: 6px;
-  border-bottom: 1px solid #ff6f00;
-}
-
-th {
-  background: #ff6f00;
-  color: #121212;
-}
-
-.tabla-contactos {
-  position: relative; /* necesario para que z-index funcione */
-  z-index: 10; /* o más, según lo que quieras superponer */
-}
-
-/* Efecto de escala al hacer hover sobre filas */
-.obj-mensuales table tbody tr {
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.obj-mensuales table tbody tr:hover {
-  transform: scale(1.02);
-  background-color: #2a2a2a; /* tono oscuro levemente distinto para el hover */
-  z-index: 1;
-  position: relative;
-}
-
 /* Reducir espacio entre subtítulo y tabla */
 #contact .section-title {
   margin-bottom: -50px; /* ajustá este valor según lo necesites */
@@ -4456,3 +4364,98 @@ th {
   max-width: 80vw; /* Ajustá a tu gusto */
   width: 100%;
 }
+
+
+
+/* OBJETIVOS SECTION */
+
+.obj-mensuales {
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 96%) 0%, var(--background-color) 40%, color-mix(in srgb, var(--accent-color), transparent 98%) 100%);
+  box-shadow: 0 20px 60px color-mix(in srgb, var(--default-color), transparent 88%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 50px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid #222222;
+}
+
+.obj-header {
+  background: #1e1e1e;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #ff8f00;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: space-around;
+  background: #1e1e1e;
+  padding: 10px 0;
+}
+
+.tab-buttons button {
+  background: transparent;
+  border: 1px solid #ff6f00;
+  padding: 8px 12px;
+  color: #ffab40;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.tab-buttons button.active,
+.tab-buttons button:hover {
+  background: #ff6f00;
+  color: #121212;
+  border-color: #ff9100;
+}
+
+.tab-content {
+  padding: 10px 15px 20px 15px;
+  background: #1a1a1a;
+  color: #f5f5f5;
+  font-size: 13px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+th, td {
+  padding: 6px;
+  border-bottom: 1px solid #ff6f00;
+}
+
+th {
+  background: #ff6f00;
+  color: #121212;
+}
+
+.tabla-contactos {
+  position: relative; /* necesario para que z-index funcione */
+  z-index: 10; /* o más, según lo que quieras superponer */
+}
+
+/* Efecto de escala al hacer hover sobre filas */
+.obj-mensuales table tbody tr {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.obj-mensuales table tbody tr:hover {
+  transform: scale(1.02);
+  background-color: #2a2a2a; /* tono oscuro levemente distinto para el hover */
+  z-index: 1;
+  position: relative;
+}
+/* OBJETIVOS FIN */
