@@ -47,7 +47,7 @@ canvas#canvas {
 .inner {
   --w: 100px;
   --h: 150px;
-  --translateZ: calc((var(--w) + var(--h)) * 2); /* Aumenta separación */
+  --translateZ: calc((var(--w) + var(--h)) * 2);
   --rotateX: -15deg;
   --perspective: 1000px;
   position: absolute;
@@ -57,9 +57,26 @@ canvas#canvas {
   left: calc(50% - (var(--w) / 2) - 2.5px);
   z-index: 2;
   transform-style: preserve-3d;
-  transform: perspective(var(--perspective));
+  transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0deg);
+  will-change: transform;
+  cursor: grab;
+}
+
+/* Animación automática si tiene esta clase */
+.inner.auto-rotate {
   animation: rotating 20s linear infinite reverse;
 }
+/* NUEVO CODIGO */
+.inner:active {
+  cursor: grabbing;
+}
+
+.inner.bloqueado {
+  animation: none !important;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+/* FIN NUEVO CODIGO */
 
 @keyframes rotating {
   from {
