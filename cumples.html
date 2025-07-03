@@ -185,7 +185,7 @@
   </div>
 </div>
 
-<div class="card" style="--index: 6; --color-card: 30, 144, 255;">
+<div class="card" style="--index: 6; --color-card: 255, 105, 180;">
   <div class="profile-photo">
     <img src="assets/img/person/team - ailen.webp" alt="Foto persona" class="profile-img img-fluid" />
   </div>
@@ -324,6 +324,10 @@
     <p class="birthday">31/12</p>
   </div>
 </div>
+</div>
+<div class="carousel-controls">
+<button id="prev-btn">⟨</button>
+<button id="next-btn">⟩</button>
 </div>
 </div>
 
@@ -474,310 +478,132 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/confeti.js"></script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Fecha actual
-    const today = new Date();
-    const dia = String(today.getDate()).padStart(2, '0');
-    const mes = String(today.getMonth() + 1).padStart(2, '0');
-    const hoy = `${dia}/${mes}`;
-
-    // Elementos
-    const inner = document.querySelector(".inner");
-    const cards = document.querySelectorAll(".card");
-    const cantidad = parseInt(getComputedStyle(inner).getPropertyValue('--quantity'));
-    const audio = document.getElementById("audio");
-    const toggleCont = document.getElementById("audio-toggle");
-    const toggleInput = document.getElementById("toggle");
-    const simularBtn = document.getElementById("simular-cumple");
-
-    audio.volume = 1.0;
-    audio.loop = true;
-
-    function activarCumple(index) {
-      // Detener animación y bloquear interacción
-      inner.style.animation = "none";
-      inner.classList.add("bloqueado");
-
-      // Centrar tarjeta
-      const rotacion = -index * (360 / cantidad);
-      inner.style.transform = `perspective(1000px) rotateX(var(--rotateX)) rotateY(${rotacion}deg)`;
-
-      // Mostrar toggle y reproducir música
-      toggleCont.style.display = "block";
-      audio.play().catch(() => {
-        toggleInput.checked = false;
-      });
-
-      toggleInput.checked = !audio.paused;
-
-      // Cambiar estado al hacer click
-      toggleInput.addEventListener("change", () => {
-        if (toggleInput.checked) {
-          audio.play();
-        } else {
-          audio.pause();
-        }
-      });
-
-      // Sincronizar estado visual
-      audio.addEventListener("play", () => toggleInput.checked = true);
-      audio.addEventListener("pause", () => toggleInput.checked = false);
-    }
-
-    // Verificar cumpleaños real
-    let cumpleIndex = null;
-    cards.forEach((card, index) => {
-      const fecha = card.querySelector(".birthday")?.textContent.trim();
-      if (fecha === hoy) {
-        card.classList.add("cumpleanero");
-        cumpleIndex = index;
-      }
-    });
-
-    if (cumpleIndex !== null) {
-      activarCumple(cumpleIndex);
-    } else {
-      audio.remove();
-      toggleCont.style.display = "none";
-    }
-
-    // Simular cumpleaños con el primer .card
-    simularBtn.addEventListener("click", () => {
-      const fakeCard = document.querySelector(".card");
-      if (!fakeCard) return;
-      const fakeIndex = Array.from(cards).indexOf(fakeCard);
-      fakeCard.classList.add("cumpleanero");
-      activarCumple(fakeIndex);
-    });
-
-    // 👉 SI HAY CUMPLEAÑOS, no activar interacción
-    if (inner.classList.contains("bloqueado")) return;
-
-    // ROTACIÓN MANUAL + AUTOMÁTICA
-    const total = cards.length;
-    const step = 360 / total;
-    let angle = 0;
-    let isDragging = false;
-    let startX = 0;
-    let autoRotateTimer;
-
-    function setAngle(newAngle) {
-      angle = newAngle;
-      inner.style.transform = `perspective(1000px) rotateX(-15deg) rotateY(${angle}deg)`;
-    }
-
-    function enableAutoRotate() {
-      inner.classList.add("auto-rotate");
-    }
-
-    function disableAutoRotate() {
-      inner.classList.remove("auto-rotate");
-    }
-
-    function restartAutoRotateTimer() {
-      clearTimeout(autoRotateTimer);
-      autoRotateTimer = setTimeout(() => {
-        enableAutoRotate();
-      }, 3000);
-    }
-
-    // TOUCH
-    inner.addEventListener("touchstart", (e) => {
-      disableAutoRotate();
-      startX = e.touches[0].clientX;
-    });
-
-    inner.addEventListener("touchmove", (e) => {
-      const currentX = e.touches[0].clientX;
-      const delta = currentX - startX;
-      angle -= delta * 0.3;
-      setAngle(angle);
-      startX = currentX;
-    });
-
-    inner.addEventListener("touchend", () => {
-      restartAutoRotateTimer();
-    });
-
-    // MOUSE
-    inner.addEventListener("mousedown", (e) => {
-      isDragging = true;
-      disableAutoRotate();
-      startX = e.clientX;
-    });
-
-    document.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
-      const delta = e.clientX - startX;
-      angle -= delta * 0.5;
-      setAngle(angle);
-      startX = e.clientX;
-    });
-
-    document.addEventListener("mouseup", () => {
-      if (isDragging) {
-        isDragging = false;
-        restartAutoRotateTimer();
-      }
-    });
-
-    // Iniciar rotación automática al comienzo
-    enableAutoRotate();
-  });
-</script>
-
-
-<!-- Botón oculto para simular cumpleaños -->
-<button id="simular-cumple" style="
-  position: fixed;
-  bottom: 1px;
-  left: 1px;
-  z-index: 10000;
-  background: transparent;
-  border: none;
-  font-size: 5px;
-  opacity: 0.1;
-  cursor: pointer;
-">
-  🎂
-</button>
-
-
+  <!-- Botón oculto para simular cumpleaños -->
+  <button id="simular-cumple" style="
+    position: fixed;
+    bottom: 1px;
+    left: 1px;
+    z-index: 10000;
+    background: transparent;
+    border: none;
+    font-size: 5px;
+    opacity: 0.1;
+    cursor: pointer;
+  ">
+    🎂
+  </button>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Fecha actual
-    const today = new Date();
-    const dia = String(today.getDate()).padStart(2, '0');
-    const mes = String(today.getMonth() + 1).padStart(2, '0');
-    const hoy = `${dia}/${mes}`;
-
-    // Elementos
-    const inner = document.querySelector(".inner");
-    const cards = document.querySelectorAll(".card");
-    const cantidad = parseInt(getComputedStyle(inner).getPropertyValue('--quantity'));
-    const audio = document.getElementById("audio");
-    const toggleCont = document.getElementById("audio-toggle");
-    const toggleInput = document.getElementById("toggle");
-    const simularBtn = document.getElementById("simular-cumple");
-
-    audio.volume = 1.0;
-    audio.loop = true;
-
-    function activarCumple(index) {
-      // Centrar tarjeta
-      inner.style.animation = "none";
-      const rotacion = -index * (360 / cantidad);
-      inner.style.transform = `perspective(1000px) rotateX(var(--rotateX)) rotateY(${rotacion}deg)`;
-
-      // Mostrar toggle y reproducir música
-      toggleCont.style.display = "block";
-      audio.play().catch(() => {
-        toggleInput.checked = false;
-      });
-
-      toggleInput.checked = !audio.paused;
-
-      // Cambiar estado al hacer click
-      toggleInput.addEventListener("change", () => {
-        if (toggleInput.checked) {
-          audio.play();
-        } else {
-          audio.pause();
-        }
-      });
-
-      // Sincronizar estado visual
-      audio.addEventListener("play", () => toggleInput.checked = true);
-      audio.addEventListener("pause", () => toggleInput.checked = false);
-    }
-
-    // Verificar cumpleaños real
-    let cumpleIndex = null;
-    cards.forEach((card, index) => {
-      const fecha = card.querySelector(".birthday")?.textContent.trim();
-      if (fecha === hoy) {
-        card.classList.add("cumpleanero");
-        cumpleIndex = index;
-      }
-    });
-
-    if (cumpleIndex !== null) {
-      activarCumple(cumpleIndex);
-    } else {
-      audio.remove();
-      toggleCont.style.display = "none";
-    }
-
-    // Simular cumpleaños con el primer .card
-    simularBtn.addEventListener("click", () => {
-      const fakeCard = document.querySelector(".card");
-      if (!fakeCard) return;
-      const fakeIndex = Array.from(cards).indexOf(fakeCard);
-      fakeCard.classList.add("cumpleanero");
-      activarCumple(fakeIndex);
-    });
-  });
-</script>
-
-<!--
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+  // 🔧 Variables generales
   const inner = document.querySelector(".inner");
-  const total = document.querySelectorAll(".card").length;
-  const step = 360 / total;
+  const cards = document.querySelectorAll(".card");
+  const cantidad = cards.length;
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+  const audio = document.getElementById("audio");
+  const toggleCont = document.getElementById("audio-toggle");
+  const toggleInput = document.getElementById("toggle");
+  const simularBtn = document.getElementById("simular-cumple");
+
+  let currentIndex = 0;
   let angle = 0;
   let isDragging = false;
   let startX = 0;
-  let lastInteractionTime = Date.now();
-
   let autoRotateTimer;
 
-  function setAngle(newAngle) {
-    angle = newAngle;
-    inner.style.transform = `perspective(1000px) rotateX(-15deg) rotateY(${angle}deg)`;
+  // 🔈 Audio
+  if (audio) {
+    audio.volume = 1.0;
+    audio.loop = true;
   }
 
-  function enableAutoRotate() {
-    if (!inner.classList.contains("auto-rotate")) {
-      inner.classList.add("auto-rotate");
+  function rotarCarrusel(index) {
+    const rotacion = -index * (360 / cantidad);
+    inner.style.transform = `perspective(1000px) rotateX(-15deg) rotateY(${rotacion}deg)`;
+  }
+
+  function activarCumple(index) {
+    currentIndex = index;
+    rotarCarrusel(currentIndex);
+
+    if (toggleCont && audio && toggleInput) {
+      toggleCont.style.display = "block";
+      audio.play().catch(() => toggleInput.checked = false);
+      toggleInput.checked = !audio.paused;
+
+      toggleInput.addEventListener("change", () => {
+        if (toggleInput.checked) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      });
+
+      audio.addEventListener("play", () => toggleInput.checked = true);
+      audio.addEventListener("pause", () => toggleInput.checked = false);
     }
+  }
+
+  // 🎂 Verificar cumpleaños real
+  const today = new Date();
+  const dia = String(today.getDate()).padStart(2, '0');
+  const mes = String(today.getMonth() + 1).padStart(2, '0');
+  const hoy = `${dia}/${mes}`;
+
+  let cumpleIndex = null;
+  cards.forEach((card, index) => {
+    const fecha = card.querySelector(".birthday")?.textContent.trim();
+    if (fecha === hoy) {
+      card.classList.add("cumpleanero");
+      cumpleIndex = index;
+    }
+  });
+
+  if (cumpleIndex !== null) {
+    activarCumple(cumpleIndex);
+  } else {
+    if (audio) audio.remove();
+    if (toggleCont) toggleCont.style.display = "none";
+  }
+
+  // 🎛 Botones carrusel
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + cantidad) % cantidad;
+      rotarCarrusel(currentIndex);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % cantidad;
+      rotarCarrusel(currentIndex);
+    });
+  }
+
+  // 🔁 Simular cumpleaños
+  if (simularBtn) {
+    simularBtn.addEventListener("click", () => {
+      const fakeIndex = 0;
+      cards[fakeIndex].classList.add("cumpleanero");
+      activarCumple(fakeIndex);
+    });
+  }
+
+  // 🔄 Rotación manual y automática
+  function enableAutoRotate() {
+    inner.classList.add("auto-rotate");
   }
 
   function disableAutoRotate() {
-    if (inner.classList.contains("auto-rotate")) {
-      inner.classList.remove("auto-rotate");
-    }
+    inner.classList.remove("auto-rotate");
   }
 
   function restartAutoRotateTimer() {
     clearTimeout(autoRotateTimer);
-    autoRotateTimer = setTimeout(() => {
-      enableAutoRotate();
-    }, 3000);
+    autoRotateTimer = setTimeout(() => enableAutoRotate(), 3000);
   }
 
-  // TOUCH EVENTS
-  inner.addEventListener("touchstart", (e) => {
-    disableAutoRotate();
-    startX = e.touches[0].clientX;
-  });
-
-  inner.addEventListener("touchmove", (e) => {
-    const currentX = e.touches[0].clientX;
-    const delta = currentX - startX;
-    angle -= delta * 0.3;
-    setAngle(angle);
-    startX = currentX;
-  });
-
-  inner.addEventListener("touchend", () => {
-    restartAutoRotateTimer();
-  });
-
-  // MOUSE EVENTS
+  // 🖱️ Mouse events
   inner.addEventListener("mousedown", (e) => {
     isDragging = true;
     disableAutoRotate();
@@ -788,7 +614,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isDragging) return;
     const delta = e.clientX - startX;
     angle -= delta * 0.5;
-    setAngle(angle);
+    inner.style.transform = `perspective(1000px) rotateX(-15deg) rotateY(${angle}deg)`;
     startX = e.clientX;
   });
 
@@ -799,11 +625,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Auto rotación inicial
+  // 🤏 Touch events
+  inner.addEventListener("touchstart", (e) => {
+    disableAutoRotate();
+    startX = e.touches[0].clientX;
+  });
+
+  inner.addEventListener("touchmove", (e) => {
+    const currentX = e.touches[0].clientX;
+    const delta = currentX - startX;
+    angle -= delta * 0.3;
+    inner.style.transform = `perspective(1000px) rotateX(-15deg) rotateY(${angle}deg)`;
+    startX = currentX;
+  });
+
+  inner.addEventListener("touchend", () => {
+    restartAutoRotateTimer();
+  });
+
+  // ▶️ Inicializar auto-rotate y posición inicial
   enableAutoRotate();
+  rotarCarrusel(currentIndex);
 });
 </script>
--->
+
 
 
 
