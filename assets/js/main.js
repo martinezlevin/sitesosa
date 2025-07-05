@@ -220,9 +220,9 @@ const data = {
     <table>
       <thead><tr><th>Desde</th><th>Hasta</th><th>Resultado</th></tr></thead>
       <tbody>
-        <tr><td>26,70%</td><td>100,00%</td><td>2,00%</td></tr>
-        <tr><td>22,20%</td><td>26,60%</td><td>1,00%</td></tr>
-        <tr><td>17,60%</td><td>22,10%</td><td>0,00%</td></tr>
+        <tr><td>27,70%</td><td>100,00%</td><td>2,00%</td></tr>
+        <tr><td>23,20%</td><td>27,60%</td><td>1,00%</td></tr>
+        <tr><td>17,60%</td><td>23,10%</td><td>0,00%</td></tr>
         <tr><td>-100,00%</td><td>17,50%</td><td>-1,00%</td></tr>
       </tbody>
     </table>
