@@ -519,6 +519,24 @@
   let autoRotateTimer;
   let isBirthdayActive = false;
   let audioAttempted = false;
+  let birthdayDate = null;
+  let birthdayIndex = null;
+
+
+setInterval(() => {
+  if (isBirthdayActive && birthdayDate) {
+    const now = new Date();
+    const mismoDia = now.getDate() === birthdayDate.getDate() &&
+                     now.getMonth() === birthdayDate.getMonth();
+    if (!mismoDia) {
+      isBirthdayActive = false;
+      birthdayDate = null;
+      document.querySelectorAll(".cumpleanero").forEach(card => card.classList.remove("cumpleanero"));
+      startAutoRotate();
+      setupDragControls();
+    }
+  }
+}, 60000); // revisa cada 60 segundos
 
   // Sistema de rotación
   function rotateTo(index) {
@@ -565,12 +583,15 @@
   }
 
   // Control de cumpleaños
+
   function activateBirthday(index) {
     isBirthdayActive = true;
+    birthdayIndex = index;
+    birthdayDate = new Date(); // guardamos la fecha actual
     rotateTo(index);
     toggleCont.style.display = "block";
     setupAudio();
-  }
+}
 
   // Detectar cumpleaños real
   cards.forEach((card, i) => {
@@ -581,13 +602,16 @@
     }
   });
 
-  // Simulador de cumpleaños
-  simularBtn?.addEventListener("click", () => {
-    if (!isBirthdayActive && cards.length > 0) {
-      cards[0].classList.add("cumpleanero");
-      activateBirthday(0);
-    }
-  });
+// Simulador de cumpleaños
+simularBtn?.addEventListener("click", () => {
+  if (!isBirthdayActive && cards.length > 0) {
+    const randomIndex = Math.floor(Math.random() * cards.length);
+    cards[randomIndex].classList.add("cumpleanero");
+    activateBirthday(randomIndex);
+    inner.classList.remove("auto-rotate"); // Detiene animación si está activa
+  }
+});
+
 
   // Resto del código (botones de navegación, rotación automática, etc.)
   // ... (mantén el mismo código para los controles de rotación)
