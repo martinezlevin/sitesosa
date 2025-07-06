@@ -255,8 +255,8 @@
     <div class="dot"></div>
     <div class="card">
       <div class="ray"></div>
-      <div class="text">75,6%</div>
-      <div class="d-flex justify-content-center">
+      <div class="content-center">
+        <div class="text">75,6%</div>
         <img src="assets/img/icons/key.png" class="img-fluid" style="width:120px;" alt="llave">
       </div>
       <div class="line topl"></div>
@@ -904,7 +904,7 @@
     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
       <div class="service-card">
         <div class="card-image">
-          <img src="assets/img/icons/icon8.png" alt="Icono 3">
+          <img src="assets/img/icons/mipersonalflow.png" alt="Icono 3">
         </div>
         <div class="card-content">
           <h5 class="service-title">
@@ -1483,14 +1483,14 @@ Nuestro compromiso es brindarte un servicio de calidad, y ya estamos tomando med
     <div class="accordion-item">
       <h2 class="accordion-header" id="heading19">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapse19">
-          CATEC A FIBRA ÓPTICA (NEW)
+          CATEC A FIBRA ÓPTICA
         </button>
       </h2>
       <div id="collapse19" class="accordion-collapse collapse" aria-labelledby="heading19" data-bs-parent="#accordionDark">
         <div class="accordion-body">
-         Ahora en tu zona ya tenés habilitado el acceso a nuestro servicio de internet por fibra óptica ✨. Es mucho más rápido, estable y de mejor calidad que el servicio actual por cable. <br>
+         Ahora en tu zona ya tenés habilitado el acceso a nuestro servicio de internet por fibra óptica ✨. Es mucho más rápido, estable y de mejor calidad que el servicio actual por cable. <br><br>
 
-📌 ¿Por qué es mejor? <br> 
+📌 ¿Por qué es mejor? <br><br> 
 
 La fibra óptica transforma tu experiencia en línea: <br> 
  🎬 Más velocidad para ver pelis y series sin interrupciones. <br> 
@@ -1498,14 +1498,14 @@ La fibra óptica transforma tu experiencia en línea: <br>
  💼 Trabajá tranquilo, aunque haya varios dispositivos conectados. <br> 
  🚫 Menos cortes, menos frustraciones. <br> 
 
-🔧 ¿Cómo hacés el cambio? <br> 
+🔧 ¿Cómo hacés el cambio? <br><br>
 
 Súper fácil y sin vueltas: <br> 
  💸 El cambio no tiene costo. <br> 
  🧑‍🔧 Lo hace un técnico especializado. <br> 
  📅 Solo coordinamos un turno, ¡y listo! Te quedás con un servicio superior. <br> 
 
-🎁 Y lo mejor: <br> 
+🎁 Y lo mejor: <br><br>
 
 Mantenés tu promo actual, pero ahora vas a disfrutar de internet mucho más rápido, moderno y confiable ⚡. 
 <div class="copy-container" style="position:absolute; top:10px; right:8px;">
@@ -1886,9 +1886,37 @@ Si querés, te puedo ayudar paso a paso para descargarla y dejarla lista 🙌 Qu
   </div>
 </div>
 
+<style>
+  .responsive-iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 160%; /* Alto relativo al ancho (1200 / 650 * 100 = 184%) - ajustalo según se necesite */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
 <div class="container text-center mt-5" data-aos="fade-up" data-aos-delay="100">
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe3-m0VkjK4OPIhaSOKqEGMpf9CxhmzBhH8YYz9n0g0WO9Daw/viewform?embedded=true" width="650" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  <div class="responsive-iframe-container">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSe3-m0VkjK4OPIhaSOKqEGMpf9CxhmzBhH8YYz9n0g0WO9Daw/viewform?embedded=true"
+      allowfullscreen
+    >
+      Loading…
+    </iframe>
+  </div>
 </div>
+
 
 </section><!-- /Pricing Section -->
 
@@ -2638,7 +2666,7 @@ Si querés, te puedo ayudar paso a paso para descargarla y dejarla lista 🙌 Qu
 
 <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-  <div class="team-header" data-aos="fade-up" data-aos-delay="200">
+  <div class="team-header" data-aos="fade-up" data-aos-delay="100">
     <div class="row align-items-center">
       <div class="col-lg-6">
         <h2>Nuestro Lideres</h2>
@@ -2653,7 +2681,7 @@ Si querés, te puedo ayudar paso a paso para descargarla y dejarla lista 🙌 Qu
     </div>
   </div>
 
-  <div class="team-slider swiper init-swiper" data-aos="fade-up" data-aos-delay="300">
+  <div class="team-slider swiper init-swiper" data-aos="fade-up" data-aos-delay="100">
     <script type="application/json" class="swiper-config">
       {
         "loop": true,

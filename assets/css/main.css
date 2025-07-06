@@ -4070,8 +4070,8 @@ section,
 }
 
 .card-image img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   margin-bottom: 20px;
   animation: myAnim 2s ease 0s 1 normal forwards;
   transform-style: preserve-3d;
@@ -4590,4 +4590,12 @@ th {
   right: 10%;
   width: 1px;
   height: 100%;
+}
+
+.content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px; /* Reduce espacio entre texto e imagen */
+  margin-top: 20px; /* Opcional, si querés bajarlo un poco */
 }
