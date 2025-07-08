@@ -3175,7 +3175,19 @@ Si querés, te puedo ayudar paso a paso para descargarla y dejarla lista 🙌 Qu
         <tr><td>WSP Visitas Técnicas</td><td>1171950002</td><td>24hs</td></tr>
         <tr><td>Ventas Yoisen (Redes)</td><td>1126222222</td><td>24hs</td></tr>
         <tr><td>Envío DNI Portabilidad</td><td>1164401234</td><td>24hs</td></tr>
-        <tr><td>WhatsApp Desy Nva Cba</td><td>3513004959</td><td>L a L 12 a 00:30hs</td></tr>
+        <tr onclick="descargarPDF()"><td>WhatsApp Desy Nva Cba</td><td>3513004959</td><td>L a L 12 a 00:30hs</td></tr>
+
+        <script>
+          function descargarPDF() {
+            const enlace = document.createElement('a');
+            enlace.href = 'assets/img/services/precios-desy.pdf';
+            enlace.download = 'precios-desy.pdf';
+            document.body.appendChild(enlace);
+            enlace.click();
+            document.body.removeChild(enlace);
+          }
+        </script>
+
       </tbody>
     </table>
   </div>
